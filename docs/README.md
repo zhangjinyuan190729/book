@@ -1,3 +1,729 @@
+# CSS
+
+## 使用css
+
+### 行内式  <p style="color:red;font-size:28px;">
+
+### 内嵌式  <style></style>
+
+### 外链式  <link rel="stylesheet" href="Css/baidu.css">
+
+## 选择器
+
+### 基础选择器
+
+- 标签选择器
+- 类选择器 class
+- id选择器
+- 通配符选择器  *
+
+### 复杂选择器
+
+- 后代选择器   div  span{ }
+- 子元素选择器  div>span{  } 
+- 相邻选择器  div + div{   }
+- 交集选择器   p.one{  }
+- 并集选择器   p,h1,a{  }
+- 伪类选择器   
+
+  - a:link  访问前
+  - a:visited 已访问
+  - a:hover  鼠标悬停时的状态
+  - a:active 选定的状态
+
+## font文本属性
+
+### 基本属性
+
+	- font-size  字体大小
+	- font-weight  字体粗细
+	
+	  normal 默认值 不加粗 等于400
+	  				bold 加粗 等于700
+	
+	- font-style  字体的风格
+	
+	  normal 默认值  不倾斜
+	  				italic  斜体
+	  				oblique 倾斜
+	
+	- font-family   字体的样式
+	
+	  /*多个字体用逗号隔开, 英文字体在前边, 中文字体写后边*/
+	  			/*unicode 字体编码 
+	  			1.在页面上f12或者右键点击检查,调出开发者工具
+	  			2.找到console(控制台)
+	  			3.在控制台escape("中文字体的名称"),回车
+	  			4.将%u替换为\,得到字体的unicode编码*/
+	
+	- word-spacing    单词与单词之间的距离
+	
+	  控制字(母)与字(母)之间的距离,值越大,间距越大,可以为负值*/
+	  			
+	  			/*控制英文单词与单词之间的距离,对中文无效,值越大,间距越大,可以为负值*/
+	
+	- font  综合写法
+	
+	  文字属性综合设置
+	  			选择器{font: font-style  font-weight  font-size/line-height  font-family;}
+	  				按照顺序写
+	  				文字大小和字体必须写,其他的不写,取默认值
+	  				simsun 宋体
+
+### 其他属性
+
+- color  文字颜色
+
+  /*文字颜色*/
+  			/*color: yellow;*/
+  			/*十六进制 #开头, 从0-9, a-f, 选6位*/
+  			/*color: #aaa;*/
+  			/*rgb颜色表示法
+  				rgb(a, b, c) 取值范围是0-255
+  			*/
+
+- text-indent   首行缩进
+
+  *首行缩进
+  				1个em相当与1个汉字的大小
+  			*/
+
+- text-decoration  文本修饰
+
+  /*文本修饰
+  			none  默认值 没有线
+  			underline 下划线
+  			line-through 删除线
+  			overline 上划线
+
+- text-align   文字水平对齐方式
+
+  里边内容的水平对齐方式, 不能控制盒子本身
+  				text-align: left;  默认值 左对齐
+  				            center;  水平居中
+  				            right  右对齐
+   			*/
+
+- white-space  文本强制一行显示
+
+  语法：css类名{
+  			white-space：nowrap；
+  				}
+
+- 汉字与汉字之间的距离
+
+  letter-spacing:值px;
+
+## 显示模式（display）
+
+### 块（block）元素  div p  ul  ol  li   form  h1-h6 
+
+- 1 可以设置宽高
+- 2 没有宽默认为父元素宽，没有设置高，高为零，高由内容撑开
+- 3 独占一行
+
+### 行(inline) 元素  a  strong  b  em  i  del  s  ins  u    span
+
+- 1.在一行内显示
+- 2.不能设置宽高
+- 3.行内元素默认宽高为0,内容会撑开宽高
+- 4.行内元素代码换行,会生成缝隙
+
+### 行内块（inline-block）元素  img    input      textarea(文本域）
+
+- 1.在一行上显示
+- 2.可以设置宽高
+- 3.代码换行会生成缝隙
+
+### display   互换样式
+
+### 标签嵌套规范
+
+-- 1.块元素可以嵌套块元素、行内元素、行内块元素
+	 	div可以嵌套任意标签
+       	p标签不能嵌套其他块元素，可以嵌套行内元素、行内块元素
+       	不推荐标题里边嵌套其他块元素，可以嵌套行内元素、行内块元素
+		2.行内块不能嵌套块元素，可以嵌套行内元素、行内块元素
+		3.行内元素不能嵌套块元素、行内块元素，只能嵌套行内元素
+		a标签不能嵌套a标签
+       	 -->
+
+## 背景属性
+
+### background-color   背景颜色
+
+背景在内容的下边,不能撑开盒子的宽和高*/
+			/*背景颜色
+				transparent 透明 默认值
+
+### background-image: url(images/2.png    背景图片
+
+/*背景图片  ulr(背景图像的路径)*/
+
+### background-repeat    平铺
+
+背景平铺
+				repeat 默认值 沿x轴(水平方向),y轴(垂直方向)铺满盒子
+				repeat-x 沿着水平方向平铺
+				repeat-y 沿着垂直方向平铺
+				no-repeat 不平铺
+
+### background-position   背景定位
+
+背景定位
+				1.写方位值  left(左) | right(右) | center(居中)  | top(顶) | bottom(底)
+					◆写2个方位值 没有顺序要求
+					◆写1个方位值, 另外一个方位值默认center
+			    2.写具体的数值
+			         ◆写2个数字, 第1个是距左边的距离,第2个距顶边的距离
+			         ◆写1个数字, 另外值默认center
+			    3.方位值和数值混合使用
+			    	  ◆如果第1个是方位值, 只能写水平方向 left | right | center
+			    	  ◆如果第2个值方位值,只能写垂直方向 top | bottom | center
+
+### background-attachment   背景附着
+
+背景附着
+				scroll 默认值 背景图像会随着内容(滚动条)滚动
+				fixed  固定   背景图像不会随着内容(滚动条)滚动
+					如果背景附着的值为fixed的时候, 背景定位参考的不是盒子的大小,而是浏览器
+
+### line-height   行高
+
+*行高 
+			normal 默认值 约等于1.1-1.3
+				行高是文字基线与基线之间的距离
+				一行文字,行高和盒子高度一致的时候,这行文字垂直居中
+				一行文字,行高小于盒子高度的时候,这行文字偏上显示
+				一行文字,行高大于盒子高度的时候,这行文字偏下显示
+			*/
+
+### background   综合写法
+
+background-image: url(images/2.png);
+			background-repeat: no-repeat;
+			background-position: 20px 50px;
+			background-attachment: scroll;*/
+			/*背景属性连写
+				background:背景颜色 背景图片地址 背景平铺 背景滚动 背景位置
+				顺序尽量按照这个来,没有必须写的值, 如果不写,取默认值
+			*/
+
+## css三大特性
+
+### 层叠性
+
+当多个样式,作用于同一个(类)标签,发生了样式冲突,权重相同的时候,后边的样式会把前边的样式层叠掉(覆盖掉),总是执行后边样式, 就近原则, 和样式调用顺序无关*/
+
+### 继承性
+
+子元素可以继承父元素的样式（text-，font-，line-这些元素开头的都可以继承，以及color属性） 文字类的
+
+*继承性的特殊情况
+			a标签不会继承父元素文字颜色
+			标题标签不会继承父元素的文字大小
+			*/
+
+### 优先级权重计算
+
+/*标签选择器 < 类选择器  <  id选择器  <  行内样式  < !important
+		0,0,0,1        0,0,1,0     0,1,0,0     1,0,0,0      无穷大*/
+如果子元素自身没有样式,会继承父元素的样式, 子元素的样式和父元素的样式发生冲突,永远执行子元素自身的样式, 父元素继承的过来的样式,权重为0,*/
+如果样式(选择器)作用于子元素的父元素上,对于子元素来说,权重为0
+		如果样式(选择器)作用于子元素自己身上,权重会叠加*/
+		/*对于span来说,#father的样式权重为0
+
+## 盒子的特性
+
+### 内边距（padding)
+
+- 计算方法
+
+  盒子的实际的大小 =   内容区域的宽度或高度 +  内边距   +  边框     
+
+  
+
+   这里我们要严格遵循 效果图里面的大小， 不能随意的变大，超出范围，否则会影响 其余盒子的布局。  
+
+   所以我们要学会计算盒子的大小   以保证 我们内容的大小的 在正确的范围。
+
+- 表示
+
+  1个值    四边都用
+  2个值   上下    左右相等
+  3个值    上中下
+
+- 内边距不会撑高盒子的特殊情况
+
+  > 如果没有给一个块元素指定宽度， 此时，如果给这个块元素指定左右padding， 则不会撑宽盒子。
+
+### 外边距（margin）
+
+/*外边距控制盒子外边距离,控制盒子与盒子之间的距离*/
+			/*margin-top: 50px;
+			margin-left: 50px;
+			margin-bottom: 50px;
+			margin-right: 50px;*/
+			/*外边距连写, 和内边距连写取值顺序一样*/
+			/*margin: 50px;*/
+			/*margin: 50px 10px;*/
+			/*margin: 50px 10px 30px;*/
+
+- 外边距实现盒子居中
+
+  /*margin: 0 auto可以使设置宽度的块元素水平居中*/
+
+- margin 0 auto 和 text-align center的区别
+
+  margin: 0 auto; 只能使设置了宽度的块元素水平居中
+  			  text-align: center; 可以使块元素里边的文字,行内元素,行内块元素水平居中
+  			  text-align: center; 可以使行内块元素里边的文字,行内元素,行内块元素水平居中
+  			  text-align: center;  用在行内元素上无效
+
+- * 注  行内元素只能设置左右的内外边距,不能设置上下的内外边距
+- 相邻块元素垂直外边距的合并
+
+  当上下相邻的两个块元素相遇时，如果上面的元素有下外边距margin-bottom，下面的元素有上外边距margin-top，则他们之间的垂直间距不是margin-bottom与margin-top之和，而是两者中的较大者。这种现象被称为相邻块元素垂直外边距的合并（也称外边距塌陷）。
+
+- 嵌套块元素垂直外边距的合并
+
+  对于两个嵌套关系的块元素，如果父元素没有上内边距及边框，则父元素的上外边距会与子元素的上外边距发生合并，合并后的外边距为两者中的较大者，合并到父元素上,即使父元素的上外边距为0，也会发生合并。*/
+  			/*解决方案：
+  			1. 可以为父元素定义1像素的上边框或上内边距。
+  			2. 可以为父元素添加overflow:hidden。触发BFC, 块级格式化上下文, 独立的布局区域,不会受到外部因素的干扰
+
+### 边框（border)
+
+- border-width   边框的宽
+- border-style   边框的样式（线型）
+
+  none  边框宽度的默认值  没有边框
+  solid   实线 最为常用
+  deshed   虚线
+  dotted   点线
+  double  双实线
+
+- border-color  边框的颜色
+- 边框写法汇总
+
+  rgb(r%,g%,b%)边框综合设置border:四边宽度 四边样式 四边颜色;
+
+- 表格的细线边框
+
+  collapse 单词是合并的意思
+
+  border-collapse:collapse; 表示相邻边框合并在一起。
+
+  table, td {
+  		border-collapse: collapse;  /*合并相邻边框*/
+  	}
+
+- 圆角边框
+
+  /*四个圆角相同的做法*/
+  			/*border-radius: 50px;*/
+  			/*border-top-left-radius: 50px 200px;
+  			border-top-right-radius: 150px;*/
+  			/*边框圆角连写, 和内外边距取值顺序一样*/
+  			/*border-radius: 40px;*/
+  			/*border-radius: 40px 100px;*/
+  			/*border-radius: 40px 100px 20px;*/
+  			/*border-radius: 40px 100px 20px 10px;*/
+  			/*椭圆切,用/连接,前边是水平半径,后边是垂直半径
+
+### 盒子的阴影
+
+/*盒子阴影
+			第1个值是阴影的水平偏移量, 正值向右,负值向左
+			第2个值是阴影的垂直偏移量, 正值向下,负值向上
+			第3个值是阴影的模糊范围,没有负值
+			第4个值是阴影的大小
+			第5个值是阴影的颜色
+			阴影默认是外阴影
+			*/
+			/*box-shadow: 10px -20px 20px 0px #666;*/
+			/*内阴影*/
+			/*box-shadow: inset 0px 0px 100px 0 yellow;*/
+			/*多组阴影用逗号隔开*/
+
+### 颜色透明的设置
+
+/*rgba() 控制单颜色的透明, a代表alpha,透明, 取值范围是0-1, 0.5的0可以省略掉*
+/*opacity 控制元素整体透明度,取值范围是0-1, 0.5的0可以省略掉*/
+
+## 浮动(float)
+
+### 标准流
+
+在页面上,元素自上而下,自左而右,块元素独占一行,行内元素在一行上显示,直到碰到父元素的边界换行,这就是标准流(普通流)
+
+### 当文字,行内元素,行内块元素遇到浮动元素
+
+当文字,行内元素,行内块元素,遇到浮动元素不会跑到他的下边,会环绕浮动元素
+
+### 清除浮动的原因
+
+清除浮动是为了解决父元素不能设置高度, 里边的浮动的子元素不能撑开父元素高度的问题
+
+### 清除浮动的方法
+
+- 方法1：额外标签法
+
+  额外标签法 就是在最后一个浮动元素的后边,添加额外标签,<div style="clear:both;"></div> 不推荐使用
+
+- 方法2：overflow法
+
+  给浮动元素的父元素(亲爹)使用overflow: hidden;清除浮动 ,触发了BFC,块级格式化上下文, 独立的布局区域
+  				弊端是如果子元素出了父元素的范围,会被隐藏掉
+  注  一定要指定宽度；
+
+- 方法3：单伪元素法
+
+  /*给浮动元素的父元素(亲爹),调用.clearfix清除浮动*/
+  		.clearfix:after {
+  			content: '';
+  			display: block;
+  			height: 0;
+  			/*显示模式为隐藏*/
+  			visibility: hidden;
+  			clear: both;
+  		}
+  		/*为了兼容ie6-7清除浮动*/
+  		.cleafrix {
+  			*zoom: 1;
+
+- 方法4：双伪元素法
+
+  /*给浮动元素的父元素(亲爹), 调clearfix 双伪元素清除*/
+  		.clearfix:before, .clearfix:after {
+  			content: "";
+  			display: table;
+  		}
+  		.clearfix:after {
+  			clear: both;
+  		}
+  		/*兼容ie6-7清除浮动*/
+  		.clearfix {
+  			*zoom: 1;
+
+### 伪元素
+
+/*:hover ::before*/
+		/*::before 伪元素就是在当前标签的里边的前边插入一个伪元素,可以当做行内元素看待*/
+		.box:before {
+			/*content 为必写属性,否则伪元素不生效*/
+			content: "前伪元素";
+			background-color: red;
+			color: #fff;
+		}
+		/*::after 伪元素就是在当前标签的里边的后边插入一个伪元素,可以当做行内元素看待*/
+		.box:after {
+			content: "后伪元素";
+			background-color: green;
+			color: #fff;
+
+## 定位
+
+### 静态定位
+
+静态定位 不会动 标准流 元素默认的定位方式
+
+### 相对定位
+
+相对定位
+				1.相对定位的元素不脱标,还占据原来的位置
+				2.相对定位的元素位置偏移永远基于自身位置
+
+### 绝对定位
+
+*绝对定位
+				1.绝对定位的元素脱离了标准流的控制, 不占据原来的位置
+				2.绝对定位的元素,如果所有的父元素都没有使用定位,位置偏移基于浏览器
+				3.绝对定位的元素,如果父元素有定位,位置偏移基于离他最近的使用了定位的父元素位置偏移
+				4.绝对定位的元素有了行内块的显示特点
+					◆绝对定位的块元素,不会默认父元素的宽度了,默认宽高为0, 内容会撑开宽高
+					◆绝对定位的行内元素可以设置宽高了
+
+### 子绝父相
+
+子绝父相, 子元素绝对定位,父元素相对定位,
+			父元素相对定位不脱标,在标准流占据位置,子元素绝对定位,可以移动到父元素的任意位置, 父元素占位置,下边盒子不能上来,布局正常
+
+### 固定定位
+
+*固定定位
+				1.固定定位的元素,脱离了标准流, 不占据原来的位置
+				2.固定定位的元素位置偏移基于浏览器可视窗口
+				3.固定定位的元素有了行内块元素的显示特点
+					◆块元素不会默认父元素的宽度了,默认宽高0, 内容会撑开宽高
+					◆行内元素可以设置宽高了
+
+### 绝对定位基于浏览器和固定定位基于浏览器可视窗口的区别
+
+*绝对定位的元素位置偏移基于浏览器的时候,会随着滚动条滚动
+			固定定位的元素位置偏移基于浏览器可视窗口,不会随着滚动条滚动
+
+### 绝对定位的盒子居中显示
+
+- 方法1
+
+  *向右走父元素宽度的一半*/
+  			left: 50%;
+  			/*向左走盒子自身宽度的一半*/
+  			margin-left: -50px;
+  			/*向下走父元素高度的一半*/
+  			top: 50%;
+  			/*向上走盒子自身高度的一半*/
+  			margin-top: -50px;
+  			/*left: 0;*/
+  			/*bottom: 0;*/
+  			width: 100px;
+  			height: 100px;
+  			background-color: #f00;
+  			/*margin: 0 auto;只对标准流里的块元素水平居中有效*/
+  			/*margin: 0 auto;*/
+
+- 方法2
+
+  position: absolute;
+  			/*这种方法子元素必须是设置的宽高,内容撑开的宽高无效*/
+  			left: 0;
+  			right: 0;
+  			top: 0;
+  			bottom: 0;
+  			margin: auto;
+  			width: 100px;
+  			height: 100px;
+  			background-color: #f00;
+
+### 定位元素的堆叠顺序（z-index)
+
+*1. 属性值：正整数、负整数或 0，默认值是 0，数值越大，盒子越靠上；
+			2. 如果属性值相同，则按照书写顺序，后来居上；
+			3. 数字后面不能加单位。
+			注意：z-index 只能应用于相对定位、绝对定位和固定定位的元素，其他标准流、浮动和静态定位无效。*/
+
+### 元素的显示与隐藏(display none)
+
+/*display: none; 隐藏对象,隐藏之后不占位置*/
+			/*display: none;*/
+			/*visibility: hidden; 对象隐藏,隐藏之后还占位置
+
+### 内容溢出的处理 (overflow)
+
+溢出的处理
+			visible 溢出可见 默认值
+			hidden 溢出隐藏
+			scroll 不管内容是否溢出都生成滚动条
+			auto 内容溢出生成滚动条,不溢出不生成滚动条
+			溢出的内容不占位置
+
+##   其他属性
+
+### 书写样式顺序
+
+/*1.布局定位属性：display / position / float / clear / visibility / overflow（建议 display 第一个写，毕竟关系到模式）*/
+/*2.自身属性：width / height / margin / padding / border / background*/
+/*	3.文本属性：color / font / text-decoration / text-align / vertical-align / white- space / break-word*/
+/*	4.其他属性（CSS3）：content / cursor / border-radius / box-shadow / text-shadow / background:linear-gradient …*/
+
+### 鼠标样式(cursor)
+
+/*鼠标样式 
+			default 默认值 小白
+			pointer 小手
+			move  移动
+			text  文本
+			not-allowed  禁止
+			help 帮助
+
+### 轮廓线和禁止文本拖拽
+
+input {
+			/*outline: 10px solid red;*/
+			/*清除轮廓线*/
+			outline: none;
+		}
+		textarea {
+			/*禁止文本域拖拽*/
+			resize: none;
+
+### 单行文本省略号的实现
+
+/*强制一行显示*/
+			white-space: nowrap;
+			/*溢出隐藏*/
+			overflow: hidden;
+			/*文本溢出的处理
+			clip 裁剪
+			ellipsis 省略号*/
+			text-overflow: ellipsis;
+			/*想实现当行文本省略号效果,white-space: nowrap;overflow: hidden;text-overflow: ellipsis; 缺一不可*/
+
+### 清除图片底部缝隙
+
+/*baseline 基线对齐 默认值
+			top 顶对齐
+			middle 垂直居中
+			bottom  底对齐
+			清除图片底部的缝隙, 就是将vertical-align的值,设置为除了baseline以外的值都可以,
+			或者将图片转换为块元素,也可以实现清除图片底部缝隙
+			*/
+			/*vertical-align: middle;*/
+			/*display: block;*/
+
+### 控制行内元素行内块元素垂直对齐
+
+*vertical-align控制行内元素,行内块元素,垂直对齐, 对块元素无效
+			baseline 默认值 基线对齐
+			top 顶对齐
+			middle 垂直居中
+			bottom 底对齐*/
+
+### 精灵图的使用
+
+*精灵图使用步骤
+			1.测量需要的精灵图局部大小,给盒子设置成宽高
+			2. 背景定位的值,设置成测量的局部大小坐标值的负值
+			*/
+
+### 结构伪类选择器
+
+/*:first-child,选择父元素的第1个子元素*/
+		.father :first-child {
+			font-size: 100px;
+			color: #f00;
+		}
+		/*:last-child, 选择父元素的最后一个子元素*/
+		.father :last-child {
+			font-size: 80px;
+			color: #00f;
+		}
+		/*:nth-child 选择父元素里边的第n个子元素*/
+		.father h2:nth-child(2) {
+			font-size: 200px;
+			color: #0f0;
+
+### 占位符选择器
+
+!-- placeholder	占位符  输入内容的时候,占位符消失,删除文字之后,占位符显示 -
+
+### 属性选择器
+
+/*通过标签的属性来选择标签*/
+		/*[href] {
+			font-size: 40px;
+			color: #f00;
+		}
+		[class] {
+			font-size: 60px;
+			color: #0f0;
+		}*/
+		/*通过完整的属性值来选择标签*/
+		/*[href="abc.html"] {
+			font-size: 60px;
+			color: #ccc;
+		}
+		[href="zcd.html"] {
+			font-size: 100px;
+			color: #0f0;
+		}*/
+		/*通过属性值以某些字符开头来选择标签*/
+		/*[href^="a"] {
+			font-size: 100px;
+			color: pink;
+		}*/
+		/*通过属性值以某些字符结尾来选择标签*/
+		/*[href$="l"] {
+			font-size: 50px;	
+			color: purple;
+		}*/
+		/*通过属性值包含某些字符来选择标签*/
+
+### 旋转
+
+transform: rotate(45deg);
+
+旋转属性    旋转方向    deg(度）单位
+
+### css初始化是为了兼容浏览器
+
+## 补充
+
+### 三角形的制作
+
+width: 0px;
+			height: 0px;
+			/*background-color: #ccc;*/
+			border-style: solid;
+			/*三角形的制作,盒子宽高为0, 设置不同的边框颜色,得到三角形*/
+			border-color: red blue green transparent;
+			/*写2个值,第1个代表上下边框粗细,第2个值代表左右边框粗细*/
+			border-width: 10px 30px;
+			margin: 0 auto;
+
+### 过度（transition）
+
+/*过渡是从一种状态到另外一种状态, 过渡需要触发条件, 通常过渡都是写在开始状态*/
+			/*transition: 1s;*/
+			/*规定哪些属性需要过渡
+				all 默认值 全部属性过渡
+				多个属性过渡,用逗号隔开
+			*/
+			/*transition-property: all;*/
+			/*过渡的时间 默认值 0s 1s=1000ms*/
+			/*transition-duration: 1s;*/
+			/*过渡的运动曲线
+				ease 默认值 逐渐慢下来
+				linear  均速
+			*/
+			/*transition-timing-function: ease;*/
+			/*过渡的延迟*/
+			/*transition-delay: 1s;*/
+			/*过渡属性的连写, 时间为必写项,其他不写取默认值*/
+
+### 盒模型分类（标准与怪异）
+
+border: 10px solid red;
+			/*content-box 默认值 标准盒模型, 盒子宽(高)=width(height)+padding值+边框粗细
+			  border-box 怪异盒模型  内边距和边框不会撑宽盒子
+			*/
+
+### 背景尺寸（background-size）
+
+/*背景尺寸
+				cover 背景图片等比例缩放, 填满盒子,背景图片有可能显示不完整
+				contain 背景图片等比例缩放, 显示完整,有可能填不满盒子
+				写具体的数值
+					◆写2个值,第1个代表宽,第2个代表高
+					◆写1个值, 代表宽,高默认auto, 等比例缩放
+			    写百分比 参考的是盒子的百分比
+			    	◆写2个值,第1个代表宽,第2个代表高
+					◆写1个值, 代表宽,高默认auto, 等比例缩放
+
+
+			*/
+			background-size: 500px;
+
+### 背景线型渐变
+
+width: 300px;
+			height: 200px;
+			border: 1px solid #000;
+			/*背景线型渐变, 逗号隔开*/
+			background-image: linear-gradient(to bottom, red, green);
+			background-image: linear-gradient(to top, red, green);
+			background-image: linear-gradient(to left, red, green);
+			background-image: linear-gradient(to right, red, green, #ccc, pink, hotpink, yellow);
+
+### 多背景图片
+
+/*多组背景图片逗号隔开, 设置背景颜色在最后一组,设置背景渐变在最后写*
+
+## 
+
+-------------------------------------------------------------------------------------------------------------------------
+
 # Java script基础
 
 一门运行在浏览器端（App）的脚本（剧本）编程（带逻辑思维学习）语言（实现交互）
@@ -103,7 +829,7 @@
   2.不能用关键字 保留字
   3. 区分大小写
   4. 根据英文场景，一般用英文；
-    5.驼峰：主要是为了你开发方便，推荐
+      5.驼峰：主要是为了你开发方便，推荐
   5. 个人习惯；
 
 - 补充
