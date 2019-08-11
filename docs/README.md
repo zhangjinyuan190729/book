@@ -1,1557 +1,603 @@
-# CSS
+# DOM
 
-## 使用css
+##    注册事件
 
-### 行内式  <p style="color:red;font-size:28px;">
 
-### 内嵌式  <style></style>
 
-### 外链式  <link rel="stylesheet" href="Css/baidu.css">
+* 点击事件 onclick
 
-## 选择器
+* 有光标的时候 onfocus
 
-### 基础选择器
+* 失去焦点时 onblur
 
-- 标签选择器
-- 类选择器 class
-- id选择器
-- 通配符选择器  *
+* 多次注册事件 .addEventListenter('click',function() {
 
-### 复杂选择器
+  * 例 btn.addEventListenter('click',function() {      });
 
-- 后代选择器   div  span{ }
-- 子元素选择器  div>span{  } 
-- 相邻选择器  div + div{   }
-- 交集选择器   p.one{  }
-- 并集选择器   p,h1,a{  }
-- 伪类选择器   
+* 鼠标的按键点下的时候触发 onmousedown
 
-  - a:link  访问前
-  - a:visited 已访问
-  - a:hover  鼠标悬停时的状态
-  - a:active 选定的状态
+  * 例document.onmousemove = function(e) {   }
 
-## font文本属性
+  * 例box.addEventListener("mouseup", function() {
 
-### 基本属性
+        console.log(3);
 
-	- font-size  字体大小
-	- font-weight  字体粗细
-	
-	  normal 默认值 不加粗 等于400
-	  				bold 加粗 等于700
-	
-	- font-style  字体的风格
-	
-	  normal 默认值  不倾斜
-	  				italic  斜体
-	  				oblique 倾斜
-	
-	- font-family   字体的样式
-	
-	  /*多个字体用逗号隔开, 英文字体在前边, 中文字体写后边*/
-	  			/*unicode 字体编码 
-	  			1.在页面上f12或者右键点击检查,调出开发者工具
-	  			2.找到console(控制台)
-	  			3.在控制台escape("中文字体的名称"),回车
-	  			4.将%u替换为\,得到字体的unicode编码*/
-	
-	- word-spacing    单词与单词之间的距离
-	
-	  控制字(母)与字(母)之间的距离,值越大,间距越大,可以为负值*/
-	  			
-	  			/*控制英文单词与单词之间的距离,对中文无效,值越大,间距越大,可以为负值*/
-	
-	- font  综合写法
-	
-	  文字属性综合设置
-	  			选择器{font: font-style  font-weight  font-size/line-height  font-family;}
-	  				按照顺序写
-	  				文字大小和字体必须写,其他的不写,取默认值
-	  				simsun 宋体
+      });
 
-### 其他属性
+* 鼠标在某个元素身上移动的时候触发 onmousemove
 
-- color  文字颜色
+* 鼠标的按键被松开的时候触发 onmouseup
 
-  /*文字颜色*/
-  			/*color: yellow;*/
-  			/*十六进制 #开头, 从0-9, a-f, 选6位*/
-  			/*color: #aaa;*/
-  			/*rgb颜色表示法
-  				rgb(a, b, c) 取值范围是0-255
-  			*/
+##### 键盘事件onkeydown、onkeyup
 
-- text-indent   首行缩进
-
-  *首行缩进
-  				1个em相当与1个汉字的大小
-  			*/
-
-- text-decoration  文本修饰
-
-  /*文本修饰
-  			none  默认值 没有线
-  			underline 下划线
-  			line-through 删除线
-  			overline 上划线
-
-- text-align   文字水平对齐方式
-
-  里边内容的水平对齐方式, 不能控制盒子本身
-  				text-align: left;  默认值 左对齐
-  				            center;  水平居中
-  				            right  右对齐
-   			*/
-
-- white-space  文本强制一行显示
-
-  语法：css类名{
-  			white-space：nowrap；
-  				}
-
-- 汉字与汉字之间的距离
-
-  letter-spacing:值px;
-
-## 显示模式（display）
-
-### 块（block）元素  div p  ul  ol  li   form  h1-h6 
-
-- 1 可以设置宽高
-- 2 没有宽默认为父元素宽，没有设置高，高为零，高由内容撑开
-- 3 独占一行
-
-### 行(inline) 元素  a  strong  b  em  i  del  s  ins  u    span
-
-- 1.在一行内显示
-- 2.不能设置宽高
-- 3.行内元素默认宽高为0,内容会撑开宽高
-- 4.行内元素代码换行,会生成缝隙
-
-### 行内块（inline-block）元素  img    input      textarea(文本域）
-
-- 1.在一行上显示
-- 2.可以设置宽高
-- 3.代码换行会生成缝隙
-
-### display   互换样式
-
-### 标签嵌套规范
-
--- 1.块元素可以嵌套块元素、行内元素、行内块元素
-	 	div可以嵌套任意标签
-       	p标签不能嵌套其他块元素，可以嵌套行内元素、行内块元素
-       	不推荐标题里边嵌套其他块元素，可以嵌套行内元素、行内块元素
-		2.行内块不能嵌套块元素，可以嵌套行内元素、行内块元素
-		3.行内元素不能嵌套块元素、行内块元素，只能嵌套行内元素
-		a标签不能嵌套a标签
-       	 -->
-
-## 背景属性
-
-### background-color   背景颜色
-
-背景在内容的下边,不能撑开盒子的宽和高*/
-			/*背景颜色
-				transparent 透明 默认值
-
-### background-image: url(images/2.png    背景图片
-
-/*背景图片  ulr(背景图像的路径)*/
-
-### background-repeat    平铺
-
-背景平铺
-				repeat 默认值 沿x轴(水平方向),y轴(垂直方向)铺满盒子
-				repeat-x 沿着水平方向平铺
-				repeat-y 沿着垂直方向平铺
-				no-repeat 不平铺
-
-### background-position   背景定位
-
-背景定位
-				1.写方位值  left(左) | right(右) | center(居中)  | top(顶) | bottom(底)
-					◆写2个方位值 没有顺序要求
-					◆写1个方位值, 另外一个方位值默认center
-			    2.写具体的数值
-			         ◆写2个数字, 第1个是距左边的距离,第2个距顶边的距离
-			         ◆写1个数字, 另外值默认center
-			    3.方位值和数值混合使用
-			    	  ◆如果第1个是方位值, 只能写水平方向 left | right | center
-			    	  ◆如果第2个值方位值,只能写垂直方向 top | bottom | center
-
-### background-attachment   背景附着
-
-背景附着
-				scroll 默认值 背景图像会随着内容(滚动条)滚动
-				fixed  固定   背景图像不会随着内容(滚动条)滚动
-					如果背景附着的值为fixed的时候, 背景定位参考的不是盒子的大小,而是浏览器
-
-### line-height   行高
-
-*行高 
-			normal 默认值 约等于1.1-1.3
-				行高是文字基线与基线之间的距离
-				一行文字,行高和盒子高度一致的时候,这行文字垂直居中
-				一行文字,行高小于盒子高度的时候,这行文字偏上显示
-				一行文字,行高大于盒子高度的时候,这行文字偏下显示
-			*/
-
-### background   综合写法
-
-background-image: url(images/2.png);
-			background-repeat: no-repeat;
-			background-position: 20px 50px;
-			background-attachment: scroll;*/
-			/*背景属性连写
-				background:背景颜色 背景图片地址 背景平铺 背景滚动 背景位置
-				顺序尽量按照这个来,没有必须写的值, 如果不写,取默认值
-			*/
-
-## css三大特性
-
-### 层叠性
-
-当多个样式,作用于同一个(类)标签,发生了样式冲突,权重相同的时候,后边的样式会把前边的样式层叠掉(覆盖掉),总是执行后边样式, 就近原则, 和样式调用顺序无关*/
-
-### 继承性
-
-子元素可以继承父元素的样式（text-，font-，line-这些元素开头的都可以继承，以及color属性） 文字类的
-
-*继承性的特殊情况
-			a标签不会继承父元素文字颜色
-			标题标签不会继承父元素的文字大小
-			*/
-
-### 优先级权重计算
-
-/*标签选择器 < 类选择器  <  id选择器  <  行内样式  < !important
-		0,0,0,1        0,0,1,0     0,1,0,0     1,0,0,0      无穷大*/
-如果子元素自身没有样式,会继承父元素的样式, 子元素的样式和父元素的样式发生冲突,永远执行子元素自身的样式, 父元素继承的过来的样式,权重为0,*/
-如果样式(选择器)作用于子元素的父元素上,对于子元素来说,权重为0
-		如果样式(选择器)作用于子元素自己身上,权重会叠加*/
-		/*对于span来说,#father的样式权重为0
-
-## 盒子的特性
-
-### 内边距（padding)
-
-- 计算方法
-
-  盒子的实际的大小 =   内容区域的宽度或高度 +  内边距   +  边框     
-
-  
-
-   这里我们要严格遵循 效果图里面的大小， 不能随意的变大，超出范围，否则会影响 其余盒子的布局。  
-
-   所以我们要学会计算盒子的大小   以保证 我们内容的大小的 在正确的范围。
-
-- 表示
-
-  1个值    四边都用
-  2个值   上下    左右相等
-  3个值    上中下
-
-- 内边距不会撑高盒子的特殊情况
-
-  > 如果没有给一个块元素指定宽度， 此时，如果给这个块元素指定左右padding， 则不会撑宽盒子。
-
-### 外边距（margin）
-
-/*外边距控制盒子外边距离,控制盒子与盒子之间的距离*/
-			/*margin-top: 50px;
-			margin-left: 50px;
-			margin-bottom: 50px;
-			margin-right: 50px;*/
-			/*外边距连写, 和内边距连写取值顺序一样*/
-			/*margin: 50px;*/
-			/*margin: 50px 10px;*/
-			/*margin: 50px 10px 30px;*/
-
-- 外边距实现盒子居中
-
-  /*margin: 0 auto可以使设置宽度的块元素水平居中*/
-
-- margin 0 auto 和 text-align center的区别
-
-  margin: 0 auto; 只能使设置了宽度的块元素水平居中
-  			  text-align: center; 可以使块元素里边的文字,行内元素,行内块元素水平居中
-  			  text-align: center; 可以使行内块元素里边的文字,行内元素,行内块元素水平居中
-  			  text-align: center;  用在行内元素上无效
-
-- * 注  行内元素只能设置左右的内外边距,不能设置上下的内外边距
-- 相邻块元素垂直外边距的合并
-
-  当上下相邻的两个块元素相遇时，如果上面的元素有下外边距margin-bottom，下面的元素有上外边距margin-top，则他们之间的垂直间距不是margin-bottom与margin-top之和，而是两者中的较大者。这种现象被称为相邻块元素垂直外边距的合并（也称外边距塌陷）。
-
-- 嵌套块元素垂直外边距的合并
-
-  对于两个嵌套关系的块元素，如果父元素没有上内边距及边框，则父元素的上外边距会与子元素的上外边距发生合并，合并后的外边距为两者中的较大者，合并到父元素上,即使父元素的上外边距为0，也会发生合并。*/
-  			/*解决方案：
-  			1. 可以为父元素定义1像素的上边框或上内边距。
-  			2. 可以为父元素添加overflow:hidden。触发BFC, 块级格式化上下文, 独立的布局区域,不会受到外部因素的干扰
-
-### 边框（border)
-
-- border-width   边框的宽
-- border-style   边框的样式（线型）
-
-  none  边框宽度的默认值  没有边框
-  solid   实线 最为常用
-  deshed   虚线
-  dotted   点线
-  double  双实线
-
-- border-color  边框的颜色
-- 边框写法汇总
-
-  rgb(r%,g%,b%)边框综合设置border:四边宽度 四边样式 四边颜色;
-
-- 表格的细线边框
-
-  collapse 单词是合并的意思
-
-  border-collapse:collapse; 表示相邻边框合并在一起。
-
-  table, td {
-  		border-collapse: collapse;  /*合并相邻边框*/
-  	}
-
-- 圆角边框
-
-  /*四个圆角相同的做法*/
-  			/*border-radius: 50px;*/
-  			/*border-top-left-radius: 50px 200px;
-  			border-top-right-radius: 150px;*/
-  			/*边框圆角连写, 和内外边距取值顺序一样*/
-  			/*border-radius: 40px;*/
-  			/*border-radius: 40px 100px;*/
-  			/*border-radius: 40px 100px 20px;*/
-  			/*border-radius: 40px 100px 20px 10px;*/
-  			/*椭圆切,用/连接,前边是水平半径,后边是垂直半径
-
-### 盒子的阴影
-
-/*盒子阴影
-			第1个值是阴影的水平偏移量, 正值向右,负值向左
-			第2个值是阴影的垂直偏移量, 正值向下,负值向上
-			第3个值是阴影的模糊范围,没有负值
-			第4个值是阴影的大小
-			第5个值是阴影的颜色
-			阴影默认是外阴影
-			*/
-			/*box-shadow: 10px -20px 20px 0px #666;*/
-			/*内阴影*/
-			/*box-shadow: inset 0px 0px 100px 0 yellow;*/
-			/*多组阴影用逗号隔开*/
-
-### 颜色透明的设置
-
-/*rgba() 控制单颜色的透明, a代表alpha,透明, 取值范围是0-1, 0.5的0可以省略掉*
-/*opacity 控制元素整体透明度,取值范围是0-1, 0.5的0可以省略掉*/
-
-## 浮动(float)
-
-### 标准流
-
-在页面上,元素自上而下,自左而右,块元素独占一行,行内元素在一行上显示,直到碰到父元素的边界换行,这就是标准流(普通流)
-
-### 当文字,行内元素,行内块元素遇到浮动元素
-
-当文字,行内元素,行内块元素,遇到浮动元素不会跑到他的下边,会环绕浮动元素
-
-### 清除浮动的原因
-
-清除浮动是为了解决父元素不能设置高度, 里边的浮动的子元素不能撑开父元素高度的问题
-
-### 清除浮动的方法
-
-- 方法1：额外标签法
-
-  额外标签法 就是在最后一个浮动元素的后边,添加额外标签,<div style="clear:both;"></div> 不推荐使用
-
-- 方法2：overflow法
-
-  给浮动元素的父元素(亲爹)使用overflow: hidden;清除浮动 ,触发了BFC,块级格式化上下文, 独立的布局区域
-  				弊端是如果子元素出了父元素的范围,会被隐藏掉
-  注  一定要指定宽度；
-
-- 方法3：单伪元素法
-
-  /*给浮动元素的父元素(亲爹),调用.clearfix清除浮动*/
-  		.clearfix:after {
-  			content: '';
-  			display: block;
-  			height: 0;
-  			/*显示模式为隐藏*/
-  			visibility: hidden;
-  			clear: both;
-  		}
-  		/*为了兼容ie6-7清除浮动*/
-  		.cleafrix {
-  			*zoom: 1;
-
-- 方法4：双伪元素法
-
-  /*给浮动元素的父元素(亲爹), 调clearfix 双伪元素清除*/
-  		.clearfix:before, .clearfix:after {
-  			content: "";
-  			display: table;
-  		}
-  		.clearfix:after {
-  			clear: both;
-  		}
-  		/*兼容ie6-7清除浮动*/
-  		.clearfix {
-  			*zoom: 1;
-
-### 伪元素
-
-/*:hover ::before*/
-		/*::before 伪元素就是在当前标签的里边的前边插入一个伪元素,可以当做行内元素看待*/
-		.box:before {
-			/*content 为必写属性,否则伪元素不生效*/
-			content: "前伪元素";
-			background-color: red;
-			color: #fff;
-		}
-		/*::after 伪元素就是在当前标签的里边的后边插入一个伪元素,可以当做行内元素看待*/
-		.box:after {
-			content: "后伪元素";
-			background-color: green;
-			color: #fff;
-
-## 定位
-
-### 静态定位
-
-静态定位 不会动 标准流 元素默认的定位方式
-
-### 相对定位
-
-相对定位
-				1.相对定位的元素不脱标,还占据原来的位置
-				2.相对定位的元素位置偏移永远基于自身位置
-
-### 绝对定位
-
-*绝对定位
-				1.绝对定位的元素脱离了标准流的控制, 不占据原来的位置
-				2.绝对定位的元素,如果所有的父元素都没有使用定位,位置偏移基于浏览器
-				3.绝对定位的元素,如果父元素有定位,位置偏移基于离他最近的使用了定位的父元素位置偏移
-				4.绝对定位的元素有了行内块的显示特点
-					◆绝对定位的块元素,不会默认父元素的宽度了,默认宽高为0, 内容会撑开宽高
-					◆绝对定位的行内元素可以设置宽高了
-
-### 子绝父相
-
-子绝父相, 子元素绝对定位,父元素相对定位,
-			父元素相对定位不脱标,在标准流占据位置,子元素绝对定位,可以移动到父元素的任意位置, 父元素占位置,下边盒子不能上来,布局正常
-
-### 固定定位
-
-*固定定位
-				1.固定定位的元素,脱离了标准流, 不占据原来的位置
-				2.固定定位的元素位置偏移基于浏览器可视窗口
-				3.固定定位的元素有了行内块元素的显示特点
-					◆块元素不会默认父元素的宽度了,默认宽高0, 内容会撑开宽高
-					◆行内元素可以设置宽高了
-
-### 绝对定位基于浏览器和固定定位基于浏览器可视窗口的区别
-
-*绝对定位的元素位置偏移基于浏览器的时候,会随着滚动条滚动
-			固定定位的元素位置偏移基于浏览器可视窗口,不会随着滚动条滚动
-
-### 绝对定位的盒子居中显示
-
-- 方法1
-
-  *向右走父元素宽度的一半*/
-  			left: 50%;
-  			/*向左走盒子自身宽度的一半*/
-  			margin-left: -50px;
-  			/*向下走父元素高度的一半*/
-  			top: 50%;
-  			/*向上走盒子自身高度的一半*/
-  			margin-top: -50px;
-  			/*left: 0;*/
-  			/*bottom: 0;*/
-  			width: 100px;
-  			height: 100px;
-  			background-color: #f00;
-  			/*margin: 0 auto;只对标准流里的块元素水平居中有效*/
-  			/*margin: 0 auto;*/
-
-- 方法2
-
-  position: absolute;
-  			/*这种方法子元素必须是设置的宽高,内容撑开的宽高无效*/
-  			left: 0;
-  			right: 0;
-  			top: 0;
-  			bottom: 0;
-  			margin: auto;
-  			width: 100px;
-  			height: 100px;
-  			background-color: #f00;
-
-### 定位元素的堆叠顺序（z-index)
-
-*1. 属性值：正整数、负整数或 0，默认值是 0，数值越大，盒子越靠上；
-			2. 如果属性值相同，则按照书写顺序，后来居上；
-			3. 数字后面不能加单位。
-			注意：z-index 只能应用于相对定位、绝对定位和固定定位的元素，其他标准流、浮动和静态定位无效。*/
-
-### 元素的显示与隐藏(display none)
-
-/*display: none; 隐藏对象,隐藏之后不占位置*/
-			/*display: none;*/
-			/*visibility: hidden; 对象隐藏,隐藏之后还占位置
-
-### 内容溢出的处理 (overflow)
-
-溢出的处理
-			visible 溢出可见 默认值
-			hidden 溢出隐藏
-			scroll 不管内容是否溢出都生成滚动条
-			auto 内容溢出生成滚动条,不溢出不生成滚动条
-			溢出的内容不占位置
-
-##   其他属性
-
-### 书写样式顺序
-
-/*1.布局定位属性：display / position / float / clear / visibility / overflow（建议 display 第一个写，毕竟关系到模式）*/
-/*2.自身属性：width / height / margin / padding / border / background*/
-/*	3.文本属性：color / font / text-decoration / text-align / vertical-align / white- space / break-word*/
-/*	4.其他属性（CSS3）：content / cursor / border-radius / box-shadow / text-shadow / background:linear-gradient …*/
-
-### 鼠标样式(cursor)
-
-/*鼠标样式 
-			default 默认值 小白
-			pointer 小手
-			move  移动
-			text  文本
-			not-allowed  禁止
-			help 帮助
-
-### 轮廓线和禁止文本拖拽
-
-input {
-			/*outline: 10px solid red;*/
-			/*清除轮廓线*/
-			outline: none;
-		}
-		textarea {
-			/*禁止文本域拖拽*/
-			resize: none;
-
-### 单行文本省略号的实现
-
-/*强制一行显示*/
-			white-space: nowrap;
-			/*溢出隐藏*/
-			overflow: hidden;
-			/*文本溢出的处理
-			clip 裁剪
-			ellipsis 省略号*/
-			text-overflow: ellipsis;
-			/*想实现当行文本省略号效果,white-space: nowrap;overflow: hidden;text-overflow: ellipsis; 缺一不可*/
-
-### 清除图片底部缝隙
-
-/*baseline 基线对齐 默认值
-			top 顶对齐
-			middle 垂直居中
-			bottom  底对齐
-			清除图片底部的缝隙, 就是将vertical-align的值,设置为除了baseline以外的值都可以,
-			或者将图片转换为块元素,也可以实现清除图片底部缝隙
-			*/
-			/*vertical-align: middle;*/
-			/*display: block;*/
-
-### 控制行内元素行内块元素垂直对齐
-
-*vertical-align控制行内元素,行内块元素,垂直对齐, 对块元素无效
-			baseline 默认值 基线对齐
-			top 顶对齐
-			middle 垂直居中
-			bottom 底对齐*/
-
-### 精灵图的使用
-
-*精灵图使用步骤
-			1.测量需要的精灵图局部大小,给盒子设置成宽高
-			2. 背景定位的值,设置成测量的局部大小坐标值的负值
-			*/
-
-### 结构伪类选择器
-
-/*:first-child,选择父元素的第1个子元素*/
-		.father :first-child {
-			font-size: 100px;
-			color: #f00;
-		}
-		/*:last-child, 选择父元素的最后一个子元素*/
-		.father :last-child {
-			font-size: 80px;
-			color: #00f;
-		}
-		/*:nth-child 选择父元素里边的第n个子元素*/
-		.father h2:nth-child(2) {
-			font-size: 200px;
-			color: #0f0;
-
-### 占位符选择器
-
-!-- placeholder	占位符  输入内容的时候,占位符消失,删除文字之后,占位符显示 -
-
-### 属性选择器
-
-/*通过标签的属性来选择标签*/
-		/*[href] {
-			font-size: 40px;
-			color: #f00;
-		}
-		[class] {
-			font-size: 60px;
-			color: #0f0;
-		}*/
-		/*通过完整的属性值来选择标签*/
-		/*[href="abc.html"] {
-			font-size: 60px;
-			color: #ccc;
-		}
-		[href="zcd.html"] {
-			font-size: 100px;
-			color: #0f0;
-		}*/
-		/*通过属性值以某些字符开头来选择标签*/
-		/*[href^="a"] {
-			font-size: 100px;
-			color: pink;
-		}*/
-		/*通过属性值以某些字符结尾来选择标签*/
-		/*[href$="l"] {
-			font-size: 50px;	
-			color: purple;
-		}*/
-		/*通过属性值包含某些字符来选择标签*/
-
-### 旋转
-
-transform: rotate(45deg);
-
-旋转属性    旋转方向    deg(度）单位
-
-### css初始化是为了兼容浏览器
-
-## 补充
-
-### 三角形的制作
-
-width: 0px;
-			height: 0px;
-			/*background-color: #ccc;*/
-			border-style: solid;
-			/*三角形的制作,盒子宽高为0, 设置不同的边框颜色,得到三角形*/
-			border-color: red blue green transparent;
-			/*写2个值,第1个代表上下边框粗细,第2个值代表左右边框粗细*/
-			border-width: 10px 30px;
-			margin: 0 auto;
-
-### 过度（transition）
-
-/*过渡是从一种状态到另外一种状态, 过渡需要触发条件, 通常过渡都是写在开始状态*/
-			/*transition: 1s;*/
-			/*规定哪些属性需要过渡
-				all 默认值 全部属性过渡
-				多个属性过渡,用逗号隔开
-			*/
-			/*transition-property: all;*/
-			/*过渡的时间 默认值 0s 1s=1000ms*/
-			/*transition-duration: 1s;*/
-			/*过渡的运动曲线
-				ease 默认值 逐渐慢下来
-				linear  均速
-			*/
-			/*transition-timing-function: ease;*/
-			/*过渡的延迟*/
-			/*transition-delay: 1s;*/
-			/*过渡属性的连写, 时间为必写项,其他不写取默认值*/
-
-### 盒模型分类（标准与怪异）
-
-border: 10px solid red;
-			/*content-box 默认值 标准盒模型, 盒子宽(高)=width(height)+padding值+边框粗细
-			  border-box 怪异盒模型  内边距和边框不会撑宽盒子
-			*/
-
-### 背景尺寸（background-size）
-
-/*背景尺寸
-				cover 背景图片等比例缩放, 填满盒子,背景图片有可能显示不完整
-				contain 背景图片等比例缩放, 显示完整,有可能填不满盒子
-				写具体的数值
-					◆写2个值,第1个代表宽,第2个代表高
-					◆写1个值, 代表宽,高默认auto, 等比例缩放
-			    写百分比 参考的是盒子的百分比
-			    	◆写2个值,第1个代表宽,第2个代表高
-					◆写1个值, 代表宽,高默认auto, 等比例缩放
-
-
-			*/
-			background-size: 500px;
-
-### 背景线型渐变
-
-width: 300px;
-			height: 200px;
-			border: 1px solid #000;
-			/*背景线型渐变, 逗号隔开*/
-			background-image: linear-gradient(to bottom, red, green);
-			background-image: linear-gradient(to top, red, green);
-			background-image: linear-gradient(to left, red, green);
-			background-image: linear-gradient(to right, red, green, #ccc, pink, hotpink, yellow);
-
-### 多背景图片
-
-/*多组背景图片逗号隔开, 设置背景颜色在最后一组,设置背景渐变在最后写*
-
-## 
-
--------------------------------------------------------------------------------------------------------------------------
-
-# Java script基础
-
-一门运行在浏览器端（App）的脚本（剧本）编程（带逻辑思维学习）语言（实现交互）
-注：里边的符号一定要用英文符号
-
-## 基础
-
-### 前端中的地位
-
-- html   骨架
-- css  皮肤样式
-- Java script   行为   交互 
-
-### 引入方式
-
-- 外链式（开发使用）
-
-  与link标签不同也是使用script标签：
-  <!-- <script src="./02-demo.js"></script> -->
-
-- 行内式（一般不用）
-
-  div id="box" onclick='alert("你点击我了")'></div>
-
-- 内嵌式（学习阶段）
-
-  写在<body>标签下
-  <script>    
-  内容
-  
-
-  </script>
-
-### 注释
-
-- 单行注释
-
-  // 1.单行注释：一般是用于简单的注释；阿达 阿萨达是多  ctrl + /
-
-- 多行注释
-
-  2.多行注释：大段落的注释，用于文档说明，后面函数方法的说明 ctrl + shift + /
-    /*
-
-### 输入&输出
-
-- prompt  文本框
-
-  弹出输入文本框：
-  		prompt（提示输入信息）
-
-- alert  弹窗
-
-  弹出一个提示窗口。学习阶段使用：
-   		alert（提示内容）
-
-- console.log 后台输出
-
-  控制台可见：
-  	console.log（输出内容，多个内容{，}隔开）
-
-- document.write  页面内输出
-
-  可以在页面内输出：
-  		document.write（<p>输入内容，也可以输入htm标签</p>“l）
-
-### 变量  var
-
-本质
-变量接收，储存数据
-
-- 语法
-
-  1. var 关键字 声明变量
-     var a; 声明变量；
-     a = 1; 给变量赋值
-
-- 配合输入
-
-  var pwd = prompt('请输入您的卡密码')
-  alert(pwd);
-
-- 可以再次赋值
-
-  var b = "我";
-    console.log(b);
-     再次重新赋值，以后b一直是200；
-     b = 200;
-     console.log(b)
-
-- 声明时赋值
-
-  5. 声明时赋值；
-     var a = 1;
-      = 后面有个东西要赋值给a
-      a+1后结果，重新赋值给a;
-     a = a + 1;
-     自己运算后给自己重新赋值
-
-- 命名规范
-
-  1.不能数字开头
-  2.不能用关键字 保留字
-  3. 区分大小写
-  4. 根据英文场景，一般用英文；
-      5.驼峰：主要是为了你开发方便，推荐
-  5. 个人习惯；
-
-- 补充
-
-  1.一行声明；
-    var a,b;
-   2.声明时赋值
-    var a = 1;
-    var b = 2;
-    3. 声明的时候，也赋值；
-        var a = 1,b = 2;
-   4. 我们要一起声明；
-      var a, b = 2;
-      3.变量赋值给其他变量
-      var a = 1;
-       		 a = 2;
-      var  b = 2;
-       a 赋值给你a;
-      b = a;
-
-### 基本数据类型
-
-现金和支付宝里u的数字都是在描述我们的资产，但他们类型不同
-
-- 数字类型 nunber
-
-  所有数字都是数字类型
-  NaN   不确定的某个数     数字类型
-
-- 字符串类型
-
-  字符串：单双引号；
-    var b = "1";
-    我说："今天班长真好看！"
-    单双引号：单引号包着双引号
-    console.log('我说："今天班长真好看"');
-    用双引号包着单引号；
-    console.log("我说：'今天班长真好看'");
-  转译字符：js可以认识的字符
-
-- 布尔类型  boolean
-
-  true    成立
-  false  不成立
-
-- null 值   复杂类型
-- undefined 不知道的值
-
-  浏览器懵了，意思是：
-  它也不知道给你啥值！！
-
-- 检查类型   typeof
-
-  用法：
-  1.typeof+空格+变量名；
-  2..typeof（变量名）；
-
-- 数据类型转换
-
-  其他类型转数字类型：
-  			Namber（其他数据类型）；
-  Namber（字符串类型）；结果：NaN；
-  Namber（布尔类型）；结果：true（1）
-  false（0）；
-  Namber（null）；结果：0   空
-  ；
-  Namber（undefined）；结果：NaN
-
-  undefined 不知道给你啥值只能 NaN；
-  -----------------------------------------------------
-  parseInt(其他数据类型)，parseFloat(其他数据类型)：
-  只能接受字符串,要转成功：必须字符串里的数字写在前面，其他类型都是  NaN
-  -----------------------------------------------------
-  其他类型转字符串类型：
-  String（）:相当于给你要转的这个数据左右两边加单双引号；
-  .toString():null undefined 不能用
-  -----------------------------------------------------
-  其他类型转布尔类型：
-   转 Boolean 结果：存在 不存在 返回就是一个布尔值；
-    // 逻辑：只要是确认的，存在的数据，都是ture
-   6中情况转false ：
-  空字符串、0 、 NaN、null、undefined、false
-
-### 操作符
-
-- 算术操作符
-
-  1.常规操作：数字类型
-   运算操作。优先级比赋值操作符高。
-  2.非常规：字符、布尔、null、undefined；
-  字符串遇见+，临近 的类型 变为字符串，拼接；
-  只要字符串不遇见+,确认参与运算。
-   要求数字类型
-   不是数字类型，隐式转化数字类型的过程；
-  var a = "1000" - 1;"1000" 可以转化为1000；
-  ture+1=2
-   不常规：
-
-  字符串遇见+：左右临近的类型都会转换为字符串；
-   字符串遇见- / * %：参与运算，我们要的数据类型，字符串隐式转换为数字类型
-    数字  "1000"
-  能成功转化
-    NaN   "abc"  "null";
-    null 隐式转数字 0
-    Boolean 隐式转数字 0 或者1
-    undefined 隐式转数字 NaN
-  -----------------------------------------------------
-  a++   先运算得结果，后自增；
-  ++a   先自增  ，后运算得结果；
-
-- 比较操作符
-
-  比较运算符：> < >= <=
-   常规操作：比数字类型
-  返回:这个比较后的结果状态 Boolean；
-   比较操作符 优先级高于 赋值操作符
-   非常规：
-   比较运算符：两边都是需要数字类型；
-    不是数字类型， 隐式转化 为 数字类型；
-  -------------------------------------------------------
-   ==与===；
-   ==:比较运算符，优先级高于 赋值运算符；
-   1 先看类型:
-   2若类型相同，比值；
-   3.若类型不同，隐式转化 数字类型
-  ；
-   NaN:泛指，不是某个数；
-   console.log(NaN == NaN);false
-   ===：直接比类型，
-   先看类型:
-   1.如果类型相同，比值；
-   2.如果类型不同，直接false;
-  != !==：和上面是同理，只不过是判断数据的值不等；
-
-- 逻辑操作符
-
-  && 且 ：全部满足 
-    常规：需要Boolean值进行逻辑判断；
-    返回：把最后一个满足的结果，返回过来；
-    console.log(true && true);
-    返回：当遇见不满足情况，直接就把不满足结果返回；
-    console.log(false && true);
-    遇见：非Boolean值；转换为布尔值参与逻辑判断；
-    console.log(1 && 2);
-    true  true  返回最后那个是true判断的结果；
-     console.log(null && 1);
-     转化 只是去参与比较:false true;
-    返回：原来位置上的数据；
-  -----------------------------------------------------
-   || 或：满足一个条件即可；
-
-- 赋值运算符
-
-  配合算术运算符在里面；简写：
-  +=  -=  *=  /=  %=
-  a = a % 3;
-  简写：
-  a %=3;
-
-- 操作符优先级
-
-  大致的优先级：
-  - 括号先算
-  - 其次算算术：++a优先;
-  - 再次算比较  > ==
-  - 然后算逻辑 && ||
-  - 最后算赋值 =
-
-## 结构
-
-### 流程控制
-
-	- 表达式
-	
-	  在js代码中，只要可以返回一个**结果**的，都可以称为一个表达式；
-	  技巧：在浏览器后台可以直接敲表达式，回车返回的就是该表达式的结果
-	
-	- 语句
-	
-	  - 可以理解为一个**行为**，一般在行为和行为之间，都会使用 `;` 隔开。
-	  - 行为：告诉浏览器，我要干什么，你按照我写的思路，给我实现出来给用户看；
-	  - 可以理解为：**语句，是有思维参与在里面的表达式，升级版的表达式；**
-	  - 语句有时候会有返回值，有时候就没有；更侧重是一个**行为上**的理解；
-	
-	- 结构
-	
-	  写程序，就是写各种**语句的组织**，归根到底，就是各种表达式参与我们的思维的体现
-	  - - 顺序结构：从上到下执行的代码就是顺序结构，**程序默认就是由上到下顺序执行的**；
-	    - 分支结构：不同的情况下，走不同的分支；
-	    - 循环结构：重复做一件事情，其作用就是用来重复执行代码的；
-	  - **程序的世界中大量的逻辑就是 分支和循环；**
-
-### 结构
-
-- 分支结构
-
-  - if结构
-
-    if语句：我想看条件表达式的结果成立时，会怎么样；
-    // 条件表达式：需要返回Boolean值；如果返回的不是Boolean值，就隐式转化为Boolean值；
-    if(true) {
-       // 当 条件表达式 的结果是 true 时 执行的代码
-    if(条件表达式){
-       //当条件表达式的结果是 true 时执行的代码
-    }else {
-      //当条件表达式的结果是 false 时执行的代码
+```js
+- 按键按下：keydown
+- 按键弹起：keyup
+text.onkeydown = function(e) {
+   // console.log(e.keyCode, e.ctrlKey);
+    // 判断是否同时按下ctrl和回车
+    if (e.ctrlKey && e.keyCode === 13) {
     }
-
-    -----------------------------------------------------
-    if-else-if**：解决多分支的判断问题
-    // 当满足这个
-    if(条件表达式1){
-       //当条件表达式1的结果是 true 时执行的代码
-    }
-    else if(条件表达式2){
-      //当条件表达式2的结果是 true 时执行的代码
-    }
-    else if(条件表达式3){
-      //当条件表达式3的结果是 true 时执行的代码
-    }
-    // 中间可以继续写多个判断 ...
-    else {
-      // 多个条件表达式的结果都是 false 的时候执行的代码
-    }
-
-  - switch-case结构
-
-    switch-case结构：主要用于多个**固定值**之间的判断，只能做固定值的判断
-    switch （数据）{
-      case 固定值1: 
-        // 当 数据 === 固定值1 时执行的代码; 先看类型，看值；
-        
-        // 表示当前 情况结束；
-        break;
-
-      case 固定值2: 
-        // 当数据 === 固定值2时执行的代码;
-        break;
-            
-      case 固定值3: 
-        // 当数据 === 固定值3时执行的代码;
-        break;
-      // 中间还可以写多个判断
-
-
-      default : 
-        // 当数据和上面的所有固定值都不相等的时候执行的代码
-        break;
-    }
-
-  - 三元表达式
-
-    表达式：**有值会返回；**
-    语法：if else 的简写；有返回值；
-    表达式1 ? 表达式2 : 表达式3;
-
-    // 首先 要知道 表达式 会返回结果；
-    // 先执行表达式1，判断其结果是true还是false，
-    // 如果是true，则执行表达式2，然后将 表达式2的执行结果 作为整个三元表达式的结果，
-    // 如果是false，则执行表达式3，并 表达式3的结果 作为整个三元表达式的结果
-
-- 循环结构
-
-  - while循环
-
-    语法：
-     条件表达式结果返回布尔值；true;
-    while (条件表达式){
-      // 循环体  就是重复执行的代码
-    }
-    - 特点：
-      - 设置为true，容易卡死；
-      - 设置false，直接就不执行；
-    - 直接写true false直接就玩死：
-      初始化变量
-      var num = 1;
-
-    // 退出条件：
-    while(num<=10) {
-        // 循环体：过程，你想要重复的事情；这样里面就循环了十次
-        
-        
-        // 满足退出条件的代码
-        num++;
-    }
-    // 写这种可以配合着循环变化的表达式（先成立，最后不成立）
-    -----------------------------------------------------
-    - 执行过程：
-      - 1.**先执行条件表达式，得到一个布尔类型的结果**
-      - 2.如果表达式的结果为false，循环结束，不执行循环后面的代码
-      - 3.如果表达式的结果为true，执行循环体；
-      - 4.重复1~3的过程，直到表达式结果为false，结束循环；
-    - 找偶数：
-      - 1-10的数据一个个的过；
-      - 每个数据要经过 偶数条件 的筛查；
-
-  - for循环！！！
-
-    语法；
-    for(初始化表达式; 条件表达式; 自增表达式){
-      // 循环体
-    }
-    - 执行过程：
-
-    1. **执行初始化表达式(只执行一次)**
-    2. **执行条件表达式**
-    3. 如果条件表达式的结果为false, 结束循环；
-    4. 如果条件表达式的结果为true，执行循环体
-    5. **执行自增表达式**
-    6. 重复2~5的步骤，直到条件表达式的结果为false，结束循环
-
-  - do-while循环(补充)
-
-    语法；
-    do {
-      //循环体
-    }while(条件表达式)
-    - 执行过程：
-      - 先执行循环体
-      - 执行条件表达式
-      - 如果条件表达式结果为false，结束循环
-      - 如果条件表达式结果为true，执行循环体
-      - 重复2~4的步骤，直到条件表达式结果为false，结束循环
-    - 特点：
-      - 至少会执行一次；
-      - 写true也会卡死；
-
-- 调试 
-
-  在逻辑复杂情况下在后台调试分析；
-  1.在浏览器页面，右击鼠标点击检查进入后台
-  2.再结构页面点击Sources进入调试页面
-  3.在想要观看演示的地方点击建立断点
-  4.点击右上角从左至右第一个按钮；
-  5.再点击页面刷新
-  6.点击右上角从左至右第三个按钮 “下一步”进行观看演示。
-
-## 数组
-
-### 数组
-
-数组：
-	数据是一个有顺序、有长度数据集合。
-数组类型；Object；
-特点：
-- 把数据放在一起；
-- 有先后位置上的顺序；
-- 有数据的长度；
-
-- 声明
-
-  声明;
-  var  arr =[数据，数据 ]这是一个数组。
-  没有数据的数组称为空数组。
-
-- 存值
-
-  把数据存到数组里；
-  arr[0] = 91;
-  arr[1] = 88;
-  arr[2] = 72;
-  arr[3] = 45;
-  arr[4] = 63;
-  这时数组里应该是：
-  var  arr=[91,88,72,45, 63]
-
-- 取值
-
-  把存进去的数据取出来；
-  arr[0]  是数组里的第一个值，那第一个数据的索引（又称下标）为0；把索引当一个变量用就好；数组的索引是从0开始的。
-
-- 数组长度  length
-
-  数组长度就是数组里数据的个数；
-  表示方法；
-  		数组名.length=数据的个数；
-  数组长度往往比索引大1。
-
-- 遍历
-
-  var  arr=[数据、、、、]  先声明一个数组，
-  var sum = 0;一个承接和的变量
-  for(var i = 0; i <arr.length(数组长度） ; i++){
-    sum += arr[i];i同时也是索引数值，
-  让它们都经过一遍，累积相加。
-  }
-  console.log(sum);最后的结果
-
-- 清空数组
-
-  arr.length=0;
-
-- 数组构造函数
-
-  语法：
-  	var  arr = new Array();
-  和数组的区别：
-  	输入多组数时没啥区别，但是只输入一组数据时，数组会把这一组数当成其中一组数据
-  而构造函数则会把它当做长度使用
-  *注意  函数后边跟着（）而数组后边跟着[ ];
-
-### 小娜V1.0知识点
-
-- 循环结构知识点
-
-  当遇到未知循环次数时用  while循环或者do while循环
-
-- 分支结构知识点
-
-  break；循环退出，这里switch分支结构里边break重复不生效，所以不用，但也是可以使用：
-
-- 求和知识点
-
-  需求：我们输入"数字,数字,数字"的格式，需要转为数组，求和。
-  当我们输入数字时，就会出现以下情况；
-  var str = '12,88,72,6'
-  这时候不是只要转数字类型就可以，需要用分隔符；
-  语法：
-  		var str = '12,88,72,6'
-  转换：
-  		var str = str.split(',');这时候就把它转换成一个从前到后的数组了。
-  		var  str = [12,88,72,6]
-  再按照数组求和运算即可。
-  注; 括号里的分割符和你要求的符号必须一致。
-
-- 获取时间知识点
-
-  在js中，要获取系统的当前日期和时间，需要用到一个js自带的**Date对象** ：
-  	创建Date对象：
-  	var date = new Date();必须写
-  	获取年份：
-  	var year = date.getFullYear();
-  	获取月份 ：
-  	var month = date.getMonth();
-  	获取天：
-  	var day = date.getDate();
-  	注：这里day在国外是指星期天，后边必				须是date才能获取日。
-  	获取小时
-  	var hour = date.getHours();
-  	获取分钟
-  	var minute = date.getMinutes();
-  	获取秒数
-  	var second = date.getSeconds();
-  	为了格式上的好看：单位数，补位成双位数；
-  	if(day < 10){
-      day = '0' + day;
-  }
-
-- 随机笑话知识点
-
-  有给随机值的一个对象Math：
-  语法：	var r = Math.random();（默认是选取0~1之间的随机数。
-  如果想要得到一个随机整数，需要把整机浮点数  乘以 一个 倍数，再取整，
-  	var r = Math.random() * 10;
-  	var index = Math.random(); [0,1)
-  	index *= list.length ; // [0,5)
-  最后一条永远拿不到，让最后一个笑话为空；
-  index = Math.floor(index) 向下取值;  [0,4]
-  	alert（数组名[ index ]）
-
-- 字符串拼接补充
-
-  alert（tab上边的反点：包裹`字符串在外${变量值在里}`）
-
-## 函数
-
-### 函数
-
-函数：我们**把一段相对独立的具有特定功能的代码块封装起来**，形成一个**独立实体**，起个名字（函数名），在后续开发中可以**随时反复调用**
-	作用：
-	封装（包起来）一段代码，将来可以随时拿来使用
-	封装：功能要单一！！！
-
-- 语法
-
-  使用：
-  	function 关键字 用于声明函数，
-  	function 函数名（形参）{
-  		里面叫函数体：我们封装，我们想随时随地拿来使用的东西
-  		}
-  	形参：它只是给里边要变的数据定义的名字，与实参没有一点关系，只是获取函数时实参顶替的位子，带入函数进行运行。
-  	注：取函数名不能数字开头,不能用关键字 保留字
-
-- 调用
-
-  调用：声明的函数，一段代码被包起来；需要被调用，才能执行当前的函数 不调用永不执行；
-  	tellStroy(实参)
-
-- 函数表达式
-
-  1.js中声明函数的方式不只有一种，还有一种方式叫`函数表达式`；
-  2.声明变量，赋值为函数；
-
-- 匿名函数
-
-  匿名函数：没有名字的函数，但是在js的语法中，是不允许匿名函数单独存在的，要配合其它语法使用：
-  		先定义一个匿名函数，再用一个变量承接，这时候那个变量名就是函数名。
-  	自调用函数：自调用函数（自执行函数）：匿名函数的另外一种使用方法；很多时候，我们需要加载页面后，自动执行一个函数；
-
-- 函数类型
-
-  在js中，只要是一种数据类型的，都可以作为函数的参数**，
-
-### 参数
-
-对于函数来说，参数是函数里边的一个变量。
-
-- 配置参数
-
-  function 函数名（参数）{
-
-  	把你要替换的部分替换为参数。
-  		}
-  配置多个参数：
-  		 函数名（参数1，参数2，参数n）{		函数体			}
-  	记得要把配置的参数写入函数名后边的（）
-  	调用：
-  		 函数名（实际参数）；
-  	在函数调用的时候，传入一个实际要参与的变量值
-
-- 参数不赋值
-
-  如果参数不赋值，那么他就变为undefined；
-  	undefined：系统也不知道给你什么值的值。
-  	严谨写法：
-  （三元表达式）：参数 =参数?参数：默认参数；
-  	1.如果没有参数输入时；就应该给它手动添加一个默认参数；
-  	2.当没有输入参数时，undefined=undefined，返回的值是布尔值false，执行冒号后边的默认参数，如果有值时返回的是true，则执行？后边的自己。
-
-- 形参与实参
-
-  形参： 形式上的参数，只能在内部使用。
-  	实参：真正参与运算的参数，可以为外边定义好的变量，且互不影响。
-  函数调用变量进行运算互不影响，函数只是借了变量背后的值进行运算，不会影响外边的变量。
-
-- 返回值  return
-
-  1.返回值：return 用于返回一个函数内部的值，后边必须跟值，不跟值返回undfind。
-  		return+空格+函数里要返回的值（写在函数内部。
-  2.终止函数执行
-  	在函数内部加入return，那么return后边的函数将不会在执行。
-
-- 函数内置  arguments伪数组
-
-  arguments：获取所有实参的对象，函数内部的变量（不是我们声明的，也不需要我们声明）。
-  arguments 这个东西看起来样子像数组，但是其实不是一个数组，我们管它叫 `伪数组`。它具有数组的长度和顺序等特征。本质为对象，可以循环遍历。
-  理解：
-     当我们不知道参数为几个时，我们可以用函数时，随便定义实参，这时候函数里边的伪数组arguments就会帮我们自动把那些参数存为一个以“arguments”命名的函数内部的数组。
-
-### 补充
-
-- 回调函数
-
-  函数也是数据类型，也可以作为别的函数的参数
-  	fn 只不过在函数内部是一个形参，内部变量；
-  function f1(a,fn){
-    console.log(a);
-   函数的调用，在函数名的后面加括号；
-   内部的函数对外面的函数叫回调函数；
-    fn(); 
-  }
-
-  function f2(){
-    console.log('f2函数执行了');
-  }
-  f1(10,f2);// 输出 10 和 'f2函数执行了'
-
-   像这种作为函数的参数，并在之内调用的函数，我们称为 `回调函数`；
-
-- 预解析！！
-
-  预解析：提前、解析（分析）会把**初始化的声明的变量、函数**，全部提升到**当前作用域**的最顶端；置顶！！
-  	变量：已经声明；函数：已经声明；
-    但是而变量的赋值和函数的调用还在原来的位置！！
-  	所以下边声明变量时，上边解析变量将会是一个空变量，并没有赋值的变量。
-
-- 作用域！！
-
-  作用域：作用范围，能生效的范围；
-  全局：
-    	全局作用域：能在页面的任何位置都可以访问。<script>标签以内的作用域
-    	全局变量：在全局作用哉下声明的变量；
-  	局部：
-    	局部作用域：只能在局部的作用域范围进行访问；函数里的作用域。
-    	局部变量：在局部作用域下声明的变量；
-
-## 对象
-
-### 介绍
-
-核心概念：**万物皆对象**，我们在编程中，使用对象来描述万事万物。
-* 对象：使用`属性`描述事物的`特征`，使用`方法`来描述`行为`， 就是对象这种语法。所以，对象就是属性和方法的集合
-* 对象描述扳手：
-  - 属性：金属、银白色
-  - 方法：能拧螺丝、防身等；
-
-### 面向对象思想
-
-我们不需要关心随机数到底是怎么产生的，只要结果
-面向对象思想：找一个**对象（工具）**，看它身上有什么方法和特点，然后我就可以用这个工具，按照我们的思维安排这个工具做事件就可以。
- 特点：
-  * **实现高效开发**：我们只要知道对象（工具）有什么属性和方法，不需要知道对象里面是如何实现的。**在别人已经提供好的方法的基础上，再次实现我们想要的效果，开发过程将大大缩短。**
-  * **便于维护：**因为你是单个对象（工具），我可以随时对你进行改造，修改；满足我的需要；
-
-### 语法
-
-- 创建
-
-  方法1：
-  	var obj（对象名称） = new Object(); // 这是一个没有属性和方法的对象
-  	方法2：
-  	var obj = {}; // 这也是一个没有属性和方法对象，其本质和构造函数创建的对象是一样的
-
-- 添加属性
-
-  // 2.添加属性（特征）
-    // 语法：对象.属性的名称 = 属性值（特征的值）
-    // 属性的名称：根据你的业务需求自己命名的；
-    obj.name = "狗蛋";
-  // 3.添加方法：
-    // 语法 对象.方法名 = 函数(匿名函数)
-    // 函数什么时候才会执行？调用的时候才会执行；
-    obj.say_name = function() {
-      console.log(obj.name);
-    }7
-  / 如果一开始，你知道对象内部的属性和方法，初始化声明
-    var obj = {
-      // 语法：属性名:属性值
-      // 多个属性名和值之间用, 隔开；
-      name: "狗蛋",
-      // 
-      age: 12,
-      // 方法名:函数
-      sayName: function() {
-        console.log(obj.name);
-      }
-    };
-   // 声明方式：键值对的方式声明；
-  	属性名必须是字符串
-    // 语法：对象["属性名"]  = 属性值；
-
-    var obj = {};
-
-    obj["name"] = "狗蛋";
-    obj["age"] = 45;
-
-- 获取j及遍历属性
-
-  `js
-    // 获取：点的方式；
-    // console.log(obj.name);
-    // 键的方式
-    // console.log(obj["name"], obj.age);
-
-
-    // 添加属性和获取属性的语法方式不同，不是说哪个方式的添加就必须用哪个方式的获取；
-  ```
-  
-  * 补充：打印一个对象上没有的属性名，返回值undefined；
-   遍历：
-  
-  ```js
-    // 遍历：数组遍历（循环）
-    // 遍历：对象遍历（对象上这些方法一个个过一次，也是某种意义上的循环）
-    // key：泛指 代表 对象上的每对键值对的 键；
-    for (var key in obj) {
-      // console.log(key);
-  
-      // 获取方式：
-      // 点方式：obj.key 为什么会输出 undefined；
-      // 把obj.key 这个key 当做一个属性名；
-      // console.log(obj.key);
-  
-      // ["属性名"]
-      // console.log(obj[key]);
-  
-      console.log(key, obj[key]);
-  
-    }
-  ```
-
-### 其他
-
-- 对象-拓展Math的n-m的随机整数
-
-  * 语法：
-    * 1.实现具体过程；
-    * 2.抽象为函数
-    * 3.给Math添加一个方法；
+}
+```
+
+##### 鼠标移入，移出onmouseover、onmouseout
+
+```js
+box.onmouseover = function() {
+    // 获取自定义属性
+    this.getAttribute("index");
+    // 添加节点对象属性，随便添加；
+    console.log(this.a);
+}
+
+// 鼠标移除时触发
+dom.onmouseout = function(){ 
+}
+```
+
+##### 动画结束事件,帧动画结束事件
+
+```js
+//过渡结束时触发
+var box = document.querySelector('.box');
+box.addEventListener('transitionend',function(){
+  console.log(123);
+});
+//帧动画结束时触发
+var box = document.querySelector('.box');
+box.addEventListener('animationend',function(){
+  console.log(123);
+})
+```
+
+* 注意：
+  - 不能使用on的方式注册，只能使用addEventListener的方式注册
+  - 如果帧动画是无限次的，不会触发该事件animationend
+
+##    获取元素对象（DOM节点）
+
+#####       根据DOM节点 获取 DOM节点
+
+```js
+父元素.children  //获取子元素：可以得到某个元素之下的所有的子元素的集合，一个**伪数组
+元素.parentNode //获取父元素：返回一个；
+元素.nextElementSibling  -  得到下一个兄弟元素
+元素.previousElementSibling - 得到上一个兄弟元素
+```
+
+- 获取元素对象 选择器 !!!
+
+```js
+document.querySelector(css选择器);
+// 作用：根据选择器获取所有满足条件的元素，这个使用的比较多；
+// 参数：多个css选择器，以逗号隔开，都是字符串
+// 返回值：伪数组；for，但是这个伪数组上面有forEach方法
+document.querySelectorAll(css选择器1,css选择器2...);
+```
+
+- 根据**标签名**获取元素
 
   ```js
-    // 3.拓展Math新的方法
-    Math.getRandom = function(n, m) {
-      var res = Math.random() * (m - n + 1);
-      // 向下取整 [0,m-n]
-      res = Math.floor(res);
-  
-  
-      // res [0,40];  加10之前；
-      res = res + n;
-  
-      // res [10,50];
-      // console.log(res);
-      // 
-      return res;
-    }
+  document.getElementsByTagName(tagname);
   ```
 
-- 简单类型与复杂类型储存数据的区别
+- 根据元素**类名**获取元素
 
-  简单类型：
-  var a = 1;
-  var b = a; 把a的值附b上；
-  	  b = 3; 给b重新附值；
-  console.log(a,b)  得到的是 a=1  b=3;
-  栈：理解·：a和b是简单类型，可以把这个“栈”看作一个宾馆；
-  声明 a和b就相当于a和b这两个”人“在“栈”这个宾馆里
-  开了两个房，a赋值就是a给a开的房子放了一些东西。给b赋值a，就是
-  把a放在屋子里的东西再复制一份，b重新赋值就是把复制a的东西覆盖
-  掉成为新的东西，所以它俩互不影响。
-  复杂类型：
+  ```js
+  document.getElementsByClassName(classname);
+  ```
 
-## 内置对象
+- **元素对象的位置**：获取到的是数值
+
+```js
+// 得到的是某个元素距离他的offsetParent元素的水平距离
+元素.offsetLeft     元素.offsetTop 
+元素的offsetParent// 找到一个有定位的父亲元素进行参考，如果亲生父亲没有定位，会一直往上找，直到找打有定位的父亲，或者body；
+```
+
+##    操作属性
+
+##### 修改节点
+
+```js
+ul.innerHTML = '<li>狗蛋</li>';   // 元素.innerHTML = '是满足html语法的标签结构';
+innerText：获取和设置元素对象（DOM节点）的文本信息；
+```
+
+##### 自定义属性
+
+```js
+a: 元素.getAttribute(属性名)
+// 作用： 根据属性名获取属性值   返回值：返回获取属性的值；
+b: 元素.setAttribute(属性名,属性值) 
+// 作用：添加或者修改属性的值  参数：都是字符串；
+c: 元素.removeAttribute(属性名)
+// 作用：删除某个属性
+```
+
+##### 标准属性-style
+
+```js
+// 获取：只能获取行内样式；
+div.style.backgroundColor
+// 设置
+div.style.backgroundColor = "#fff";
+```
+
+##### 标准属性-style
+
+```js
+console.log(元素.className); // 正常输出元素的class属性
+// 如果要修改类样式,会直接覆盖
+box.className = '新的类名';
+// 解决：在原来的基础上进行添加类名
+box.className += '新的类名';
+```
+
+#####  属性 类样式对象-classList
+
+```js
+a:  box.classList.add("类名1","类名2"...)；
+//add：给元素对象添加一个或者多个类名，不会影响原来的类名
+// 参数：多个类名，之间用逗号隔开
+b:  box.classList.remove("类名1","类名2"...)
+//remove： 给元素删除一个或者多个类名
+// 参数：多个类名，可以是多个，多个之间用逗号隔开
+c:  box.classList.toggle("类名")
+//toggle：切换类名，
+// 参数： 要切换的类名
+```
+
+##### 鼠标位置属性
+
+```js
+// 页面坐标系  -  以body的左上角作为原点
+事件对象.pageX
+事件对象.pageY
+
+// 可视区域坐标系 - 以浏览器的可视区域的左上角为原点的
+// 可视区域：就是元素用来显示内容的区域
+事件对象.clientX
+事件对象.clientY
+
+// 事件的目标对象，用户点击到谁上面了；用于事件委托；
+事件对象.target
+
+// 事件的绑定对象，就是是绑定在哪个DOM节点上 和 this一样
+// 前面说的事件源，
+e.currentTarget==this -----> true
+```
+
+##    方法
+
+##### 插入到列表最前面
+
+``` js
+父元素.insertBefore(新的子元素,旧的子元素)
+```
+
+##### 删除节点
+
+```js
+// 父元素.removeChild(要删除的子元素);
+var first = ul.children[0];
+// 调用方法，移除
+ul.removeChild(first);
+```
+
+##### 创建节点
+
+```js
+document.createElement('标签名');
+// 返回值：一个元素对象 DOM节点；
+// 注意：该方法创建的元素，是不会自动进入结构里面的，需要自己手动添加
+document.write();//JS基础
+```
+
+```js
+事件对象.stopPropagation();// 阻止冒泡
+事件对象.preventDefault();// 阻止默认行为；
+
+document.oncontextmenu = function(e){
+  e.preventDefault();// 页面右键事件 查看右键菜单
+}
+
+// 阻止a标签转跳
+// 1 把a标签的href属性设置为 javascript:void(0);
+// 2 在a标签的点击事件里面，return false;
+// 3 使用事件对象.preventDefault();
+dom_a.addEventListener('click', function(e) {
+    e.preventDefault();
+});
+```
+
+# BOM
+
+## 属性
+
+##### 获取元素的实际宽度和高度
+
+```js
+// 返回值：数值；
+元素.offsetWidth// 只能进行获取；元素的实际宽度 
+元素.offsetHeight// 元素的实际高度
+
+// 获取和设置
+dom.style.width；
+```
+
+
+
+##### location
+
+```js
+// 如果想要使用js进行跳转，只需要 location.href = 新的地址;
+location.href = 'http://www.jd.com';
+```
+
+##### localStorage和JSON
+
+```js
+一、localStorage:
+// 存储： 后面的值 前面可以放入任何数据类型，保存后为字符串；
+// 注意： 如果存储的是对象之类的复杂类型，需要先把复杂类型转换为的字符串，再存进去；
+// 多次对一个键进行赋值，会把前面的值覆盖；
+localStorage.setItem(键,值);
+
+// 读取 数据
+// 返回：我们存入的的数据的值，返回的是字符串；
+localStorage.getItem(键);
+
+// 删除键的值
+localStorage.removeItem(键);　　
+
+// 全部清空
+localStorage.clear();　
+
+二、JSON
+// 将对象转换为json格式的字符串   返回值：一个满足json格式的 字符串
+JSON.stringify(对象);
+
+// 将json格式的字符串转换为对象  返回值：依赖于你的json格式字符串，可能返回数组，或者是对象....
+JSON.parse(json格式字符串);
+```
+
+## 方法
+
+#####  获取dom节点
+
+```js
+// Computed：计算后的样式
+// 返回值： 当前作用在这个元素身上的所有样式的集合对象  BOM的方法；
+// 属性：具体的属性 无论是行内的还是CSS样式设置的，都可以获取到；字符串
+var res = window.getComputedStyle(元素对象)；
+res.width 
+```
+
+#####   方法：onload
+
+```js
+window.onload = function(){
+    // 想要获取图片的宽高，就需要等待图片加载完成后才执行后面的函数；
+}
+```
+
+##### 定时器
+
+```js
+一次性定时器：
+var timer = setTimout(函数,延迟的毫秒数);
+// 作用： 延迟一定的毫秒之后，调用函数一次;
+// 返回值： 是该定时器的id，id可以用于停止这个定时器
+clearTimeout(timer);// 停止一次性的定时器：清除后，就不会执行这个定时器；
+永久性定时器：
+var timer = setInterval(函数,间隔);
+// 作用：阶段的时间执行函数；
+// 返回值：就是该定时器的id
+clearInterval(timer);// 清除永久定时器
+
+
+```
+
+## 数组操作
+
+###   Math
+
+- Math.random 随机数
+
+  var res = Math.random() 0~1的随机数，不包括1.
+
+- Math.floor 向下取整
+
+  一般配合Math.random使用
+
+- Math.round 四舍五入
+
+  var res = Math.round(3.5000001);
+    // console.log(res);
+
+- Math.abs 绝对值
+
+  var res = Math.abs(40);
+  console.log(res);
+   var res = Math.abs(-40.4562);
+   console.log(res);
+
+  保留小数
+
+- Math.max和Math.min
+
+  最小值和最大值：
+   var res = Math.max(10, 50, 999);
+    console.log(res)
+
+- Math.ceil 向上浮点取整
+
+  Math.ceil(x)  把一个浮点数进行向上取整
+  console.log(Math.ceil(3.1));  // 4
+
+### Date
+
+- new Date
+
+  var date = new Date(); // 得到的是当前时间的日期对象
+
+- 获取年月日时分秒
+
+  配合 new Date使用：
+  	console.log(date.getFullYear());// 年份
+  console.log(date.getMonth()); // 月份，从0开始
+
+  // 当前日 为什么不是getDay() 英语：日期date，day某天；
+  console.log(date.getDate()); 
+
+  console.log(date.getHours()); // 小时，0-23
+  console.log(date.getMinutes()); // 分钟 ， 0-59
+  console.log(date.getSeconds()); // 秒数 ， 0-59
+  console.log(date.getMilliseconds()); // 毫秒 0-999 ， 1秒 = 1000毫秒
+
+- 创建一个指定日期的对象
+
+  // 给一个日期格式字符串var date = new Date('2019-01-01');// 分别传入年月日时分秒。注意传入的月份是从0开始算的var date = new Date(2019,0,1,12,33,12);
+
+- 时间戳
+
+  获取从1970年1月1日到现在的总毫秒数，常说的时间戳：
+  var date = new Date();
+
+  console.log(date.valueOf());
+  console.log(date.getTime());
+  console.log(1*date);
+
+  console.log(Date.now());
+
+### Array
+
+- push 从数组后面添加一个元素
+
+  push 从数组后面推入一个元素或多个元素：
+  var arr = [1,2,3];// 返回：修改后数组的长度arr.push(4,5,6);
+
+- pop 删除数组最后一个元素
+
+  // 数组的pop方法用于将数组的最后一个元素移除
+  var arr = [1,2,3];
+
+  // 返回 被删除的元素；
+  arr.pop();
+
+- unshift 从数组前面添加一个或多个元素
+
+  unshift 从数组前面添加一个或多个元素：
+  var arr = [1,2,3];// 返回：修改后数组的长度arr.unshift(4,5,6);
+
+- shift 用于将数组的第一个元素移除
+
+  shift 用于将数组的第一个元素移除:
+  // 数组的shift方法用于将数组的第一个元素移除var arr = [1,2,3];// 返回 被删除的元素；arr.shift();
+
+- splice：可进行数组任何位置的增删改
+
+  splice：可进行数组**任何位置**的增删改:
+  	// 数组的splice方法用于从数组的指定位置移除、添加、替换元素
+  var arr = ['a','b','c','d','e'];
+
+  // 对原数组操作
+  // 作用：从索引3开始移除，总共移除1个元素 ，
+  // 返回 被移除数据的数组
+  arr.splice(3,1); 
+  console.log(arr);
+
+
+  // 在c的后面添加7和8两个元素
+  // 作用：从索引3开始添加，移除0个元素，把7，8加入；
+  // 
+  // 返回：一个空数组
+  // 操作原数组；
+  arr.splice(3,0,7,8); 
+
+  
+
+  // 作用：从索引1开始替换，总共替换1个，用0替换 ；
+  // 返回：被替换元素的数组
+  arr.splice(1,1,0);
+  console.log(arr);
+
+### 与字符串互转
+
+- join 数组转字符串
+
+  join 用于将数组中的多元素以指定分隔符连接成一个字符串：
+  	var arr = ['刘备','关羽','张飞'];var str = arr.join('|'); console.log(str);  // 刘备|关羽|张飞
+
+- split 字符串转数组
+
+  split 字符串的方法：转数字，后面为分隔的字符：
+  	// 这个方法用于将一个字符串以指定的符号分割成数组var str = '刘备|关羽|张飞';var arr = str.split('|');console.log(arr);
+
+### 查找元素
+
+- indexOf：根据元素查找索引
+
+  indexOf：根据元素查找索引，如果这个元素在数组中，返回索引，否则返回-1，找元素在不在数组内部：
+  	var arr = [10,20,30]
+  console.log(arr.indexOf(30));  // 2
+  console.log(arr.indexOf(40));  // -1
+
+- findIndex方法用于查找满足条件的第一个元素的索引
+
+  findIndex方法用于查找满足条件的第一个元素的索引，如果没有，则返回-1：
+  	var arr = [10, 20, 30];
+  var res1 = arr.findIndex(function (item) {
+    return item >= 20;
+  });
+  // 返回 满足条件的第一个元素的的索引
+  console.log(res1);  
+
+
+  var res2 = arr.findIndex(function (item) {
+    return item >= 50;
+  });
+  // -1
+  console.log(res2);
+
+### 遍历数组
+
+- forEach：遍历数组
+
+  // 数组的 forEach 方法用于遍历数组
+  var arr_1 = [10,20,30,40,50];
+
+  // forEach方法需要一个参数是一个函数，这个函数也接收3个参数，
+  // item是数组中的每个元素，index是item的索引,arr表示当前数组；
+  // 对本数组操作，没有返回值；
+  arr_1.forEach(function(item,index,arr){
+    console.log(item,index);
+  });
+
+- filter 筛选出数组中满足条件的数组
+
+  filter 筛选出数组中满足条件的数组，**返回是一个新的数组；
+  	// 数组的filter方法用于将数组中满足条件的元素筛选出来
+  // 筛选出数组中 小于 2000 的数据
+  var arr_1 = [1500,1800,2200,300,2600,800];
+  var res = arr_1.filter(function(item,index,arr){
+    return item < 2000;
+  });
+  // fitler方法的的参数要求是一个函数，这个函数接收2个参数：item是数组中的每个元素，index是item对应的索引,arr代表当前的数组
+
+### 拼接与截取
+
+- concat  拼接数组
+
+  concat  拼接数组，**不改变原数组，创建新数组返回：
+  	// 数组的concat方法的作用是把多个数组合并成一个新的数组
+  var arr1 = [1,2,3];
+  var arr2 = [4,5,6];
+  var arr3 = [7,8,9];
+  var res = arr1.concat(arr2,arr3);
+  console.log(res);
+
+  // 复制一个数组
+  var arr_1 = arr.concat();
+
+- slice 截取数组
+
+  slice 截取数组：**不对原数组操作，返回的是新的数组；
+  	var arr = ['a','b','c','d','e'];// 表示 从下标1（包括），截取到下标为4(不包括),var res = arr.slice(1, 4);// 如果不给第二个参数，默认就是把从start开始，到length结束的所有的元素截取var arr_1 = arr_2.slice(1);// 复制数组：如果省略两个参数，start默认是0，end默认是lengthvar arr_1 = arr_2.slice();
+
+### 数组的复制
+
+- 方法1 原始for循环
+
+  var new_arr_1 = [];
+    for (let index = 0; index < arr.length; index++) {
+      new_arr_1[index] = arr[index];
+    }
+
+- 方法2  forEach 和push配合
+
+  // forEach : 变量
+    var new_arr_2 = [];
+    arr.forEach(function(item, index) {
+      new_arr_2.push(item);
+    });
+
+- 方法3  filter
+
+  // 复制一个数组
+
+  var arr_1 = arr_2.filter(function(item,index,arr){
+
+    return item;
+
+  });
+
+- 方法4  concat
+
+  var new_arr = arr.concat();
+
+- 方法5  slice
+
+  var new_arr = arr.slice();
+
+- 对象复制
+
+  var obj_1 = {    a:1,    b:2};
+  var obj_2 = {}
+  for(var key in obj_1)
+  {  obj_2[key] = obj_1[key]}
+
+### string 拼接与截取
+
+- concat 拼接
+
+  // 这个方法用于连接多个字符串，其作用相当于 + 操作符var res = "abc".concat('def','ghi');console.log(res);
+
+- substring 截取字符串
+
+  substring 截取字符串，不操作原字符串；返回截取出来的字符串；
+  	/ 这个方法用于获取字符串中的部分字符
+  var str = '我爱中华人民共和国';
+
+  // 从索引2开始，到索引4结束，得到之间的字符，不包含索引4的字符
+  var res = str.substring(2,4);
+  console.log(res);
+
+- slice 获取字符串中的部分
+
+  // 这个方法用于获取字符串中的部分字符
+  var str = '我爱中华人民共和国';
+  var res = str.slice(2,4);// 从索引2开始，到索引4结束，得到之间的字符，不包含索引4的字符
+  console.log(res);
+
+  // 看起来和substring 没有啥区别，
+  // slice()可以设置参数为负数，slice()方法在遇到负的参数的时候，会将这个负值与字符串的长度相加。
+  console.log(str.slice(-6,7));
+
+- substr  获取字符串中的部分
+
+  // 这个方法用于获取字符串中的部分字符var str = '我爱中华人民共和国';var res = str.substr(2,2);// 索引2开始，总共获取2个字符，第二个参数为个数
 
 *XMind: ZEN - Trial Version*
