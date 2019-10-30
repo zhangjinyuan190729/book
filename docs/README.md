@@ -2,5 +2,4 @@
 
 1. [vue笔记 ](https://zhangjinyuan190729.github.io/book/#/VUE)
 2. [webAPI笔记 ](https://zhangjinyuan190729.github.io/book/#/webAPI)
-3. [jQuerry笔记 ](https://zhangjinyuan190729.github.io/book/#/jQurey)
-
+3. [jQuery笔记 ](https://zhangjinyuan190729.github.io/book/#/jQuery)
